@@ -1,0 +1,21 @@
+# traefik static configuration
+providers:
+  file:
+    directory: /etc/traefik/conf.d
+    watch: true
+#log:
+  #level: DEBUG
+api:
+  insecure: true
+
+ping: {}
+
+accesslog:
+  bufferingsize: 100
+
+metrics:
+  prometheus: {}
+
+entryPoints:
+  web:
+    address: ":80"

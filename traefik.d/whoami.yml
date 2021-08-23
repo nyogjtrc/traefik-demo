@@ -1,0 +1,12 @@
+http:
+  routers:
+    whoami:
+      rule: "Host(`whoami.localhost`)"
+      entrypoints:
+        - web
+      service: whoami
+  services:
+    whoami:
+      loadBalancer:
+        servers:
+          - url: "http://whoami"

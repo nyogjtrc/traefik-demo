@@ -1,0 +1,13 @@
+http:
+  routers:
+    prometheus:
+      rule: "Host(`prometheus.local`)"
+      entrypoints:
+        - web
+      service: prometheus
+  services:
+    prometheus:
+      loadBalancer:
+        servers:
+          - url: "http://prom:9090"
+

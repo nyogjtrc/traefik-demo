@@ -1,0 +1,20 @@
+http:
+  routers:
+    swagger-ui:
+      rule: "PathPrefix(`/docs/`)"
+      entrypoints:
+        - web
+      middlewares:
+        - strip-docs
+      service: swagger-ui
+  middlewares:
+    strip-docs:
+      stripPrefix:
+        prefixes:
+          - "/docs"
+  services:
+    swagger-ui:
+      loadBalancer:
+        servers:
+          - url: "http://swagger-ui:8080"
+
